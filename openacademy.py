@@ -1,4 +1,4 @@
-#-*- coding: utf-8 -*-
+#a-*- coding: utf-8 -*-
 
 from osv import osv, fields
 
@@ -9,22 +9,3 @@ class course (osv.osv):
            "description" : fields.text("Description"),
           }
 course()
-
-class session(osv.osv):
-  _name = "openacademy.sesion"
-  
-  _columns = {
-      'name' : fields.char('Session Title',128, required="True"),
-      'start_date' : fields.date("Start Date")
-      'duration' : fields.float('Duration',digit=(6,2),help="Duration in days"),
-      'seats' : fields.integer("Seats number"),
-    }
-session()
-
-class attendee(osv.osv):
-  _name = "openacademy.attendee"
-  
-  _columns = {
-  }
-attendee()
-  
