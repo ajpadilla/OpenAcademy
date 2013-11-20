@@ -1,1 +1,1 @@
-import openacademy
+from openacademy import *
