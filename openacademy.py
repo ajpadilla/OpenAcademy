@@ -11,12 +11,12 @@ class course (osv.osv):
 course()
 
 class session(osv.osv):
-  _name = "openacademy.session"
+  _name = "session"
   _columns = {
        "name" : fields.char("Session Title", 128, required=True),
        "start_date": fields.date("Start Date"),
        "duration": fields.float("Duration", digits=(6,2), help="Duration in days"),
-       "seats":fields.integer("eats number"),
+       "seats":fields.integer("Seats number"),
       }
 session()
 

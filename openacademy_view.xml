@@ -2,7 +2,7 @@
 <openerp>
    <data>
      <record model="ir.ui.view" id="course_form_view">
-      <field name="name">course</field>
+      <field name="name">course.form</field>
       <field name="model">openacademy.course</field> 
       <field name="type">form</field> 
       <field name="arch" type="xml">
@@ -18,7 +18,7 @@
      </record>
   
      <record model="ir.ui.view" id="course_tree_view"> 
-       <field name="name">course</field>
+       <field name="name">course.tree</field>
        <field name="model">openacademy.course</field>
        <field name="type">tree</field>
        <field name="arch" type="xml">
@@ -29,15 +29,15 @@
       </record>
 
       <record model="ir.actions.act_window" id="course_list_action">
-        <field name="name">course</field>
+        <field name="name">Courses</field>
         <field name="res_model">openacademy.course</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
       </record> 
 
       <record model="ir.ui.view" id="session_form_view">
-         <field name="name">session</field>
-         <field name="model">openacademy.session</field>
+         <field name="name">session.form</field>
+         <field name="model">session</field>
          <field name="type">form</field>
          <field name="arch" type="xml">
            <form string="Session Form">
@@ -47,6 +47,7 @@
                 <field name="seats"/>
              </group>
              <group>
+                <separator string="Schedule" colspan="2"/>
                 <field name="start_date"/>
                 <field name="duration"/>
              </group>
@@ -55,8 +56,8 @@
        </record>
     
        <record model="ir.ui.view" id="session_tree_view">
-         <field name="name">session</field>
-         <field name="model">openacademy.session</field>
+         <field name="name">session.tree</field>
+         <field name="model">session</field>
          <field name="type">tree</field>
          <field name="arch" type="xml">
             <tree string="Session">
@@ -66,16 +67,16 @@
        </record>
                  
        <record model="ir.actions.act_window" id="session_list_action">
-           <field name="name">session</field>
-           <field name="res_model">openacademy.session</field>
+           <field name="name">sessions</field>
+           <field name="res_model">session</field>
            <field name="view_type">form</field>
            <field name="view_mode">tree,form</field>
        </record>      
 
        <menuitem id="openacademy_menu" name="OpenAcademy"/>
-       <menuitem id="course_menu" name="Course" parent="openacademy_menu" />
-       <menuitem id="course_data" name="Data" parent="course_menu" action="course_list_action"/>
-       <menuitem id="course_session" name="Session" parent="course_menu" action="session_list_action"/>
+       <menuitem id="course_data" name="Opciones" parent="openacademy_menu" />
+       <menuitem id="course_menu" name="Courses" parent="course_data" action="course_list_action"/>
+       <menuitem id="session_menu" name="Sessions" parent="course_data" action="session_list_action"/>
      </data>
 </openerp>
 
