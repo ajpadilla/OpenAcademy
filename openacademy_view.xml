@@ -2,20 +2,24 @@
 <openerp>
    <data>
      <record model="ir.ui.view" id="course_form_view">
-      <field name="name">course.form</field>
-      <field name="model">openacademy.course</field> 
-      <field name="type">form</field> 
-      <field name="arch" type="xml">
-        <form string="Course">
-           <field name="name"/>
-              <notebook colspan="4">
-                <page string="Description">
-           	  <field name="description" nolabel="1" colspan="4"/>
-                </page>
-              </notebook>
-        </form>
-      </field> 
-     </record>
+        <field name="name">course.form</field>
+        <field name="model">openacademy.course</field> 
+        <field name="type">form</field> 
+        <field name="arch" type="xml">
+          <form string="Course Form">
+            <field name="name"/>
+            <field name="responsible_id"/>
+               <notebook colspan="4">
+                 <page string="Description">
+               	   <field name="description" nolabel="1" colspan="4"/>
+                 </page>
+                 <page string="Sessions">
+	          <field name="session_ids" />
+                 </page>
+               </notebook>
+          </form>
+        </field> 
+      </record>
   
      <record model="ir.ui.view" id="course_tree_view"> 
        <field name="name">course.tree</field>
@@ -45,6 +49,7 @@
                 <separator string="General" colspan="2" />
                 <field name="name"/> 
                 <field name="seats"/>
+                <field name="instructor_id"/>
              </group>
              <group>
                 <separator string="Schedule" colspan="2"/>
