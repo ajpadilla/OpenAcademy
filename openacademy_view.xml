@@ -13,11 +13,12 @@
                  <page string="Description">
                	   <field name="description" nolabel="1" colspan="4"/>
                  </page>
-                 <page string="Sessions">
-	          <field name="session_ids" />
+	          <page string="Sessions">
+		     <field name="session_ids"/>
                  </page>
                </notebook>
           </form>
+
         </field> 
       </record>
   
@@ -28,6 +29,7 @@
        <field name="arch" type="xml">
          <tree string="Course">
            <field name="name"/>
+           <field name="responsible_id"/>
          </tree>
        </field>
       </record>
@@ -48,10 +50,10 @@
              <group colspan="2" col="2">
                 <separator string="General" colspan="2" />
                 <field name="name"/> 
-                <field name="seats"/>
                 <field name="instructor_id"/>
+                <field name="seats"/>
              </group>
-             <group>
+             <group colspan="2" col="2">
                 <separator string="Schedule" colspan="2"/>
                 <field name="start_date"/>
                 <field name="duration"/>
