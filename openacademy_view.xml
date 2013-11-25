@@ -15,14 +15,14 @@
                  </page>
 	          <page string="Sessions">
                      <field name="session_ids" nolabel="1" colspan="4">
-                       <!--<form string="Registered sessions">
+                       <form string="Registered sessions">
                          <field name="name"/>
                          <field name="instructor_id"/>
-                       </form>-->
-                       <!--<tree string="Registered sessions">
+                       </form>
+                       <tree string="Registered sessions">
                         <field name="name"/>
                         <field name="instructor_id"/>
-                       </tree>-->
+                       </tree>
                      </field> 
                  </page>    
                </notebook>
@@ -59,20 +59,16 @@
                 <field name="start_date"/>
                 <field name="duration"/>
              </group>
-             <notebook>
-                <page>
-                  <field name="attendee_ids" colspan="4" nolabel="1">
-                    <!--<form string="Attendees">
-		      <field name="name"/>
-		      <field name="partner_id"/>
-		    </form>-->
-		    <!--<tree string="Attendees" editable="bottom">
-		      <field name="name"/>
-		      <field name="partner_id"/>
-		    </tree>-->		
-                  </field>
-                </page>
-             </notebook> 
+             <field name="attendee_ids" nolabel="1" colspan="4">
+                 <form string="Attendees">
+		   <field name="name"/>
+		   <field name="partner_id"/>
+		  </form>
+		  <tree string="Attendees" editable="bottom">
+		     <field name="name"/>
+		     <field name="partner_id"/>
+		  </tree>	
+             </field>
             </form>
           </field>
        </record>
