@@ -16,11 +16,9 @@
 	          <page string="Sessions">
                      <field name="session_ids" nolabel="1" colspan="4">
                        <form string="Registered sessions">
-                         <field name="name"/>
                          <field name="instructor_id"/>
                        </form>
                        <tree string="Registered sessions">
-                        <field name="name"/>
                         <field name="instructor_id"/>
                        </tree>
                      </field> 
@@ -59,16 +57,14 @@
                 <field name="start_date"/>
                 <field name="duration"/>
              </group>
-             <field name="attendee_ids" nolabel="1" colspan="4">
+             <!--<field name="attendee_ids" nolabel="1" colspan="4">
                  <form string="Attendees">
-		   <field name="name"/>
 		   <field name="partner_id"/>
 		  </form>
-		  <tree string="Attendees" editable="bottom">
-		     <field name="name"/>
+		  <tree string="Attendees">
 		     <field name="partner_id"/>
 		  </tree>	
-             </field>
+             </field>-->
             </form>
           </field>
        </record>

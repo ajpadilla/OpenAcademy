@@ -3,7 +3,7 @@
 from osv import osv, fields
 
 class course (osv.osv):
- _name = "course"
+ _name = "openacademy.course"
  _description = "Course"
  _columns = {
            "name" : fields.char("Course Title",128,required=True),
@@ -13,7 +13,7 @@ class course (osv.osv):
          }
 course()
 
-class session(osv.osv)
+class session(osv.osv):
   _name="session"
   _description="Session"
   _columns = {
