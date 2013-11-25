@@ -29,7 +29,7 @@ class session(osv.osv)
 session()
 
 class attendee(osv.osv):
- _name = "openacademy.attendee"
+ _name = "attendee"
  _description="Attendee"
  _rec_name="partner_id"
  _columns = {
