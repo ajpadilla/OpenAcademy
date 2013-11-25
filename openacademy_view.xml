@@ -14,11 +14,20 @@
                	   <field name="description" nolabel="1" colspan="4"/>
                  </page>
 	          <page string="Sessions">
-		     <field name="session_ids"/>
-                 </page>
+		     <!--<field name="session_ids"/>-->
+                     <field name="session_ids" nolabel="1" colspan="4" mode="form,tree">
+                       <form string="Registered sessions">
+                         <field name="name"/>
+                         <field name="instructor_id"/>
+                       </form>
+                       <tree string="Registered sessions">
+                        <field name="name"/>
+                        <field name="instructor_id"/>
+                       </tree>
+                     </field> 
+                 </page>    
                </notebook>
           </form>
-
         </field> 
       </record>
   
@@ -38,7 +47,7 @@
         <field name="name">Courses</field>
         <field name="res_model">openacademy.course</field>
         <field name="view_type">form</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">form,tree</field>
       </record> 
 
       <record model="ir.ui.view" id="session_form_view">
@@ -58,6 +67,20 @@
                 <field name="start_date"/>
                 <field name="duration"/>
              </group>
+             <notebook>
+                <page>
+                  <field name="attendee_ids" colspan="4" nolabel="1" mode="form,tree">
+                    <form string="Attendees">
+		      <field name="name"/>
+		      <field name="partner_id"/>
+		    </form>
+		    <tree string="Attendees" editable="bottom">
+		      <field name="name"/>
+		      <field name="partner_id"/>
+		    </tree>		
+                  </field>
+                </page>
+             </notebook> 
             </form>
           </field>
        </record>
@@ -77,7 +100,7 @@
            <field name="name">sessions</field>
            <field name="res_model">session</field>
            <field name="view_type">form</field>
-           <field name="view_mode">tree,form</field>
+           <field name="view_mode">form,tree</field>
        </record>      
 
        <menuitem id="openacademy_menu" name="OpenAcademy"/>

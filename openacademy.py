@@ -3,7 +3,7 @@
 from osv import osv, fields
 
 class course (osv.osv):
- _name = "openacademy.course"
+ _name = "course"
  _description = "Course"
  _columns = {
            "name" : fields.char("Course Title",128,required=True),
@@ -13,17 +13,27 @@ class course (osv.osv):
          }
 course()
 
-class session(osv.osv):
-  _name = "session"
+class session(osv.osv)
+  _name="session"
   _description="Session"
   _columns = {
        "name" : fields.char("Session Title", 128, required=True),
        "start_date": fields.date("Start Date"),
        "duration" : fields.float("Duration", digits=(6,2), help="Duration in days"),
        "seats" : fields.integer("Seats number"),
+       "attendee_ids": fields.one2many("attendee","session_id","Attendee"),
        "instructor_id": fields.many2one("res.partner", "Instructor"),
        "course_id" : fields.many2one("openacademy.course", "Course",
         required=True, ondelete="cascade"),
       }
 session()
 
+class attendee(osv.osv):
+ _name = "openacademy.attendee"
+ _description="Attendee"
+ _rec_name="partner_id"
+ _columns = {
+     "partner_id" : fields.many2one("res.partner","Partner",required=True,ondelete="cascade"),
+     "session_id" : fields.many2one("session","Session",required=True,ondelete="cascade"),
+ }
+attendee()
