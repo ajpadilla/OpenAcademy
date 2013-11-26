@@ -14,14 +14,7 @@
                	   <field name="description" nolabel="1" colspan="4"/>
                  </page>
 	          <page string="Sessions">
-                     <field name="session_ids" nolabel="1" colspan="4">
-                       <form string="Registered sessions">
-                         <field name="instructor_id"/>
-                       </form>
-                       <tree string="Registered sessions">
-                        <field name="instructor_id"/>
-                       </tree>
-                     </field> 
+                     <field name="session_ids" nolabel="1" colspan="4"/>
                  </page>    
                </notebook>
           </form>
@@ -41,30 +34,24 @@
       </record>
 
       <record model="ir.ui.view" id="session_form_view">
-         <field name="name">session.form</field>
-         <field name="model">session</field>
-         <field name="type">form</field>
-         <field name="arch" type="xml">
-           <form string="Session Form">
-             <group colspan="2" col="2">
-                <separator string="General" colspan="2" />
-                <field name="name"/> 
-                <field name="instructor_id"/>
-                <field name="seats"/>
-             </group>
-             <group colspan="2" col="2">
-                <separator string="Schedule" colspan="2"/>
-                <field name="start_date"/>
-                <field name="duration"/>
-             </group>
-             <!--<field name="attendee_ids" nolabel="1" colspan="4">
-                 <form string="Attendees">
-		   <field name="partner_id"/>
-		  </form>
-		  <tree string="Attendees">
-		     <field name="partner_id"/>
-		  </tree>	
-             </field>-->
+          <field name="name">session.form</field>
+          <field name="model">session</field>
+          <field name="type">form</field>
+          <field name="arch" type="xml">
+            <form string="Session Form">
+              <group colspan="2" col="2">
+                 <separator string="General" colspan="2" />
+                 <field name="name"/> 
+                 <field name="instructor_id"/>
+                 <field name="seats"/>
+              </group>
+              <group colspan="2" col="2">
+                 <separator string="Schedule" colspan="2"/>
+                 <field name="start_date"/>
+                 <field name="duration"/>
+              </group>
+              <separator string="Attendees" colspan="4"/>
+              <field name="attendee_ids" nolabel="1" colspan="4"/>
             </form>
           </field>
        </record>
@@ -84,7 +71,7 @@
         <field name="name">Courses</field>
         <field name="res_model">openacademy.course</field>
         <field name="view_type">form</field>
-        <field name="view_mode">form,tree</field>
+        <field name="view_mode">tree,form</field>
       </record> 
 
           
@@ -92,7 +79,7 @@
            <field name="name">sessions</field>
            <field name="res_model">session</field>
            <field name="view_type">form</field>
-           <field name="view_mode">form,tree</field>
+           <field name="view_mode">tree,form</field>
        </record>      
 
        <menuitem id="openacademy_menu" name="OpenAcademy"/>

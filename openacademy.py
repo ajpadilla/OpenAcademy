@@ -33,6 +33,7 @@ class attendee(osv.osv):
  _description="Attendee"
  _rec_name="partner_id"
  _columns = {
+     "name" : fields.char("Name attendee",size=128),
      "partner_id" : fields.many2one("res.partner","Partner",required=True,ondelete="cascade"),
      "session_id" : fields.many2one("session","Session",required=True,ondelete="cascade"),
  }
