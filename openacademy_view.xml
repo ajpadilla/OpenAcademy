@@ -14,7 +14,16 @@
                	   <field name="description" nolabel="1" colspan="4"/>
                  </page>
 	          <page string="Sessions">
-                     <field name="session_ids" nolabel="1" colspan="4"/>
+                     <field name="session_ids" nolabel="1" colspan="4">
+                       <tree string="Registered sessions">
+		         <field name="name"/>
+                         <field name="instructor_id"/>
+                       </tree>
+                       <form string="Registered sessions">
+                         <field name="name"/>
+                         <field name="instructor_id"/>
+                       </form>
+                     </field>
                  </page>    
                </notebook>
           </form>
@@ -51,7 +60,16 @@
                  <field name="duration"/>
               </group>
               <separator string="Attendees" colspan="4"/>
-              <field name="attendee_ids" nolabel="1" colspan="4"/>
+              <field name="attendee_ids" nolabel="1" colspan="4">
+               <form string="Attendees">
+		 <field name="name"/>
+                 <field name="partner_id"/>
+               </form>
+               <tree string="Attendees" editable="bottom">
+                <field name="name"/>
+                <field name="partner_id"/>
+               </tree>
+              </field>
             </form>
           </field>
        </record>
