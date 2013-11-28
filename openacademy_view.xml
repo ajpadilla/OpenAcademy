@@ -73,7 +73,19 @@
             </form>
           </field>
        </record>
-    
+
+       <record model="ir.ui.view" id="partner_instructor_form_view">
+         <field name="name">partner.instructor.name</field>
+         <field name="model">res.partner</field>
+         <field name="type">form</field>
+         <field name="inherit_id" ref="base.view_partner_form" />
+         <field name="arch" type="xml">
+           <field name="email" position="after">
+             <field name="instructor"/>
+           </field>
+         </field>
+      </record>
+   
        <record model="ir.ui.view" id="session_tree_view">
          <field name="name">session.tree</field>
          <field name="model">session</field>

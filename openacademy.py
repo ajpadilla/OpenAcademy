@@ -38,3 +38,12 @@ class attendee(osv.osv):
      "session_id" : fields.many2one("session","Session",required=True,ondelete="cascade"),
  }
 attendee()
+
+class Partner(osv.osv):
+ _inherit = "res.partner"
+ _columns = {
+      "instructor" : fields.boolean("Instructor"),
+       "session_ids": fields.many2many("session","attendee","partner_id","session_id","Sessions")
+ }
+Partner()
+
