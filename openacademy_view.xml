@@ -80,9 +80,16 @@
          <field name="type">form</field>
          <field name="inherit_id" ref="base.view_partner_form" />
          <field name="arch" type="xml">
-           <field name="email" position="after">
-             <field name="instructor"/>
-           </field>
+          <data>
+            <field name="email" position="after">
+              <field name="instructor"/>
+            </field>
+            <notebook position="inside">
+ 	      <page string="Sessions">
+	        <field name="session_ids" nolabel="1" colspan="4"/>
+              </page>
+            </notebook>
+          </data>
          </field>
       </record>
    
