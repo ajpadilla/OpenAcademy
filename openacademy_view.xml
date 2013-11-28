@@ -59,6 +59,7 @@
                  <field name="start_date"/>
                  <field name="duration"/>
               </group>
+              <field name="course_id"/>
               <separator string="Attendees" colspan="4"/>
               <field name="attendee_ids" nolabel="1" colspan="4">
                <form string="Attendees">
