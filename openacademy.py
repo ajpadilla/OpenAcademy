@@ -22,7 +22,13 @@ class session(osv.osv):
        "duration" : fields.float("Duration", digits=(6,2), help="Duration in days"),
        "seats" : fields.integer("Seats number"),
        "attendee_ids": fields.one2many("attendee","session_id","Attendee"),
-       "instructor_id": fields.many2one("res.partner", "Instructor"),
+       "instructor_id": fields.many2one("res.partner", "Instructor",
+                                        domain=["|",("instructor","=",True),
+                                                    ("category_id.name",
+                                                     "in",
+                                                     ("Teacher Level 1","Teacher Level 2"))
+                                               ]
+                                       ),
        "course_id" : fields.many2one("openacademy.course", "Course",
         required=True, ondelete="cascade"),
       }
