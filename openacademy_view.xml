@@ -52,14 +52,15 @@
                  <separator string="General" colspan="2" />
                  <field name="name"/> 
                  <field name="instructor_id"/>
+                 <field name="course_id"/>
                  <field name="seats"/>
+                 <field name="remaining_seats_percent" widget="progressbar"/>
               </group>
               <group colspan="2" col="2">
                  <separator string="Schedule" colspan="2"/>
                  <field name="start_date"/>
                  <field name="duration"/>
               </group>
-              <field name="course_id"/>
               <separator string="Attendees" colspan="4"/>
               <field name="attendee_ids" nolabel="1" colspan="4">
                <form string="Attendees">
@@ -74,6 +75,19 @@
             </form>
           </field>
        </record>
+        
+       <record model="ir.ui.view" id="session_tree_view">
+         <field name="name">session.tree</field>
+         <field name="model">session</field>
+         <field name="type">tree</field>
+         <field name="arch" type="xml">
+            <tree string="Session">
+               <field name="name"/>
+               <field name="course_id"/>
+               <field name="remaining_seats_percent" widget="progressbar"/>
+            </tree>
+         </field>
+       </record>      
 
        <record model="ir.ui.view" id="partner_instructor_form_view">
          <field name="name">partner.instructor.name</field>
@@ -93,17 +107,6 @@
           </data>
          </field>
       </record>
-   
-       <record model="ir.ui.view" id="session_tree_view">
-         <field name="name">session.tree</field>
-         <field name="model">session</field>
-         <field name="type">tree</field>
-         <field name="arch" type="xml">
-            <tree string="Session">
-               <field name="name"/>
-            </tree>
-         </field>
-       </record>
        
       <record model="ir.actions.act_window" id="course_list_action">
         <field name="name">Courses</field>
