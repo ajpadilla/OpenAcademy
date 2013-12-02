@@ -5,12 +5,26 @@ from osv import osv, fields
 class course (osv.osv):
  _name = "openacademy.course"
  _description = "Course"
+
+ def _check_description(self,cr,uid,ids,context=None): 
+    courses=self.browse(cr,uid,ids,context=context)
+    check = True
+    for course in courses :
+      if course.name == course.description:
+         check=False
+    return check
+
+ _constraints = [(_check_description, 'Please use a different description',['name','description'])]
+
  _columns = {
            "name" : fields.char("Course Title",128,required=True),
-           "responsible_id" : fields.many2one("res.users", string="Responsible",ondelete="set null"),
+           "responsible_id": fields.many2one("res.users", string="Responsible",ondelete="set null"),
            "description" : fields.text("Description"),
            "session_ids" : fields.one2many("session", "course_id", "Session"),
          }
+
+_sql_constraints = [('unique_name', 'unique(name)','Course Title must be unique')]
+
 course()
 
 class session(osv.osv):   
@@ -29,9 +43,11 @@ class session(osv.osv):
    
   def onchange_remaining_seats(self,cr,uid,ids,seats,attendee_ids,context=None):
        result={}
-       result={'value':{'remaining_seats_percent': self._get_remaining_seats_percent(seats,attendee_ids)}}
-       return result
-           
+       result={ 'value':{'remaining_seats_percent': self._get_remaining_seats_percent(seats,attendee_ids)}}
+       if seats < 0 :
+        result['warning']={'title':'Warning','message':'You cannot have negative seats',}
+
+       return result 
 
   _columns = {
        "name" : fields.char("Session Title", 128, required=True),
