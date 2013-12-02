@@ -81,9 +81,10 @@
          <field name="model">session</field>
          <field name="type">tree</field>
          <field name="arch" type="xml">
-            <tree string="Session">
+            <tree string="Session" colors="blue:duration&lt;5;red:duration>15">
                <field name="name"/>
                <field name="course_id"/>
+               <field name="duration" invisible="1"/>
                <field name="remaining_seats_percent" widget="progressbar"/>
             </tree>
          </field>
