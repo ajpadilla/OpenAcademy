@@ -26,6 +26,12 @@ class session(osv.osv):
       for session in sessions :
          result[session.id] = self._get_remaining_seats_percent(session.seats, session.attendee_ids)
       return result
+   
+  def onchange_remaining_seats(self,cr,uid,ids,seats,attendee_ids,context=None):
+       result={}
+       result={'value':{'remaining_seats_percent': self._get_remaining_seats_percent(seats,attendee_ids)}}
+       return result
+           
 
   _columns = {
        "name" : fields.char("Session Title", 128, required=True),
@@ -41,7 +47,7 @@ class session(osv.osv):
                                         domain=["|",("instructor","=",True),
                                                     ("category_id.name",
                                                      "in",
-                                                     ("Teacher Level 1","Teacher Level 2"))
+                                                     "Teacher Level 1","Teacher Level 2")
                                                ]
                                        ),
        "course_id" : fields.many2one("openacademy.course", "Course",
