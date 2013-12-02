@@ -21,10 +21,7 @@ class course (osv.osv):
            "responsible_id": fields.many2one("res.users", string="Responsible",ondelete="set null"),
            "description" : fields.text("Description"),
            "session_ids" : fields.one2many("session", "course_id", "Session"),
-         }
-
-_sql_constraints = [('unique_name', 'unique(name)','Course Title must be unique')]
-
+           }
 course()
 
 class session(osv.osv):   
@@ -59,16 +56,12 @@ class session(osv.osv):
 						 method=True,type='float',
                                                  string="Remaining seats" 
                                                 ),
-       "instructor_id": fields.many2one("res.partner", "Instructor",
-                                        domain=["|",("instructor","=",True),
-                                                    ("category_id.name",
-                                                     "in",
-                                                     "Teacher Level 1","Teacher Level 2")
-                                               ]
-                                       ),
-       "course_id" : fields.many2one("openacademy.course", "Course",
-        required=True, ondelete="cascade"),
+       'instructor_id': fields.many2one('res.partner', 'Instructor'),
+       "course_id" : fields.many2one("openacademy.course", "Course",required=True, ondelete="cascade"),
+       'active': fields.boolean('Active'),
       }
+  _defaults = {'start_date': lambda *a : time.strftime('%Y-%m-%d'),'active':True,}
+  _sql_constraints = [('unique_name', 'unique(name)','Course Title must be unique')]
 session()
 
 class attendee(osv.osv):

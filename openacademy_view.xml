@@ -67,7 +67,7 @@
 		 <field name="name"/>
                  <field name="partner_id"/>
                </form>
-               <tree string="Attendees" editable="bottom">
+               <tree string="Attendees">
                 <field name="name"/>
                 <field name="partner_id"/>
                </tree>
