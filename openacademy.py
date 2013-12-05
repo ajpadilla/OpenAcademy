@@ -46,6 +46,14 @@ class session(osv.osv):
 
        return result 
 
+  def _get_attendee_count(self, cr, uid, ids, name, args, context=None):
+     res = {}
+     for session in self.browse(cr, uid, ids, context=context):
+	res[session.id] = len(session.attendee_ids)
+     return res
+
+
+
   _columns = {
        "name" : fields.char("Session Title", 128, required=True),
        "start_date": fields.date("Start Date"),
@@ -56,6 +64,7 @@ class session(osv.osv):
 						 method=True,type='float',
                                                  string="Remaining seats" 
                                                 ),
+       'attendee_count' : fields.function(_get_attendee_count,type="integer",string="attendee Count",method=True),
        'instructor_id': fields.many2one('res.partner', 'Instructor'),
        "course_id" : fields.many2one("openacademy.course", "Course",required=True, ondelete="cascade"),
       # 'active': fields.boolean('Active'),

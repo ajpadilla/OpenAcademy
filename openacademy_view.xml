@@ -144,6 +144,18 @@
 	</field>
        </record>
 
+       <record model="ir.ui.view" id="openacademy_session_graph_view">
+ 	<field name="name">session.graph</field>
+        <field name="model">session</field>
+        <field name="type">graph</field>
+         <field name="arch" type="xml">
+           <graph string="Participations by Courses" type="bar">
+             <field name="course_id"/>
+             <field name="attendee_count" operator="+"/>
+          </graph>
+         </field>
+       </record>
+
       <record model="ir.actions.act_window" id="course_list_action">
         <field name="name">Courses</field>
         <field name="res_model">openacademy.course</field>
@@ -157,8 +169,9 @@
            <field name="name">sessions</field>
            <field name="res_model">session</field>
            <field name="view_type">form</field>
-           <field name="view_mode">tree,form,calendar,gantt</field>
+           <field name="view_mode">tree,form,calendar,gantt,graph</field>
            <field name="session_gantt"/>
+           <!--<field name="openacademy_session_graph_view"/>-->
        </record>      
 
        <menuitem id="openacademy_menu" name="OpenAcademy"/>
