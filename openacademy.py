@@ -1,7 +1,7 @@
 #-*- coding: utf-8 -*-
 
 from osv import osv, fields
-
+import time
 class course (osv.osv):
  _name = "openacademy.course"
  _description = "Course"
@@ -58,9 +58,9 @@ class session(osv.osv):
                                                 ),
        'instructor_id': fields.many2one('res.partner', 'Instructor'),
        "course_id" : fields.many2one("openacademy.course", "Course",required=True, ondelete="cascade"),
-       'active': fields.boolean('Active'),
+      # 'active': fields.boolean('Active'),
       }
-  _defaults = {'start_date': lambda *a : time.strftime('%Y-%m-%d'),'active':True,}
+  _defaults = {'start_date': lambda *a : time.strftime('%Y-%m-%d'),}
   _sql_constraints = [('unique_name', 'unique(name)','Course Title must be unique')]
 session()
 

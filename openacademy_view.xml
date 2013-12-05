@@ -81,14 +81,26 @@
          <field name="model">session</field>
          <field name="type">tree</field>
          <field name="arch" type="xml">
-            <tree string="Session" colors="blue:duration&lt;5;red:duration>15">
+            <tree string="Session Tree" colors="blue:duration&lt;5;red:duration>15">
                <field name="name"/>
                <field name="course_id"/>
                <field name="duration" invisible="1"/>
                <field name="remaining_seats_percent" widget="progressbar"/>
             </tree>
          </field>
-       </record>      
+       </record> 
+     
+       <record model="ir.ui.view" id="session_calendar_view">
+	<field name="name">session.calendar</field>
+	<field name="model">session</field>
+	<field name="type">calendar</field>
+	<field name="arch" type="xml">
+	  <calendar string="Session Calendar" date_start="start_date" date_delay="duration" day_length="1" color="instructor_id">
+	    <field name="name"/>
+          </calendar>
+        </field>
+      </record>
+
 
        <record model="ir.ui.view" id="partner_instructor_form_view">
          <field name="name">partner.instructor.name</field>
@@ -99,7 +111,7 @@
           <data>
             <field name="email" position="after">
               <field name="instructor"/>
-            </field>
+            a</field>
             <notebook position="inside">
  	      <page string="Sessions">
 	        <field name="session_ids" nolabel="1" colspan="4"/>
@@ -108,12 +120,36 @@
           </data>
          </field>
       </record>
-       
+     
+      <record model="ir.ui.view" id="course_search_view">
+        <field name="mame">course.search</field>  
+        <field name="model">openacademy.course</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+          <search string="Session Search">
+              <field name="name"/>
+          </search>
+        </field>
+      </record>
+      <record model="ir.ui.view" id="session_gantt">
+	<field name="name">session.gantt</field>
+	<field name="model">session</field>
+	<field name="type">gantt</field>
+	<field name="arch" type="xml">
+	  <gantt string="Session Gantt" date_start="start_date" date_delay="duration" day_length="1" color="course_id">
+	    <level object="res.partner" link="instructor_id">
+	      <field name="name"/>
+ 	    </level>
+	  </gantt>
+	</field>
+       </record>
+
       <record model="ir.actions.act_window" id="course_list_action">
         <field name="name">Courses</field>
         <field name="res_model">openacademy.course</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="course_search_view"/>
       </record> 
 
           
@@ -121,7 +157,8 @@
            <field name="name">sessions</field>
            <field name="res_model">session</field>
            <field name="view_type">form</field>
-           <field name="view_mode">tree,form</field>
+           <field name="view_mode">tree,form,calendar,gantt</field>
+           <field name="session_gantt"/>
        </record>      
 
        <menuitem id="openacademy_menu" name="OpenAcademy"/>
