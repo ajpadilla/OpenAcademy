@@ -16,11 +16,21 @@ class course (osv.osv):
 
  _constraints = [(_check_description, 'Please use a different description',['name','description'])]
 
+ def _get_attendee_count(self, cr, uid, ids, name, args, context=None): 
+   res = {}
+   for course in self.browse(cr, uid, ids, context=context):
+       num=0
+       for session in course.session_ids:
+           num+=len(session.attendee_ids)
+       res[course.id] = num
+   return res
+
  _columns = {
            "name" : fields.char("Course Title",128,required=True),
            "responsible_id": fields.many2one("res.users", string="Responsible",ondelete="set null"),
            "description" : fields.text("Description"),
            "session_ids" : fields.one2many("session", "course_id", "Session"),
+           "attendee_count" : fields.function(_get_attendee_count,method=True,type='integer',string="attendee Count"),
            }
 course()
 
@@ -64,7 +74,7 @@ class session(osv.osv):
 						 method=True,type='float',
                                                  string="Remaining seats" 
                                                 ),
-       'attendee_count' : fields.function(_get_attendee_count,type="integer",string="attendee Count",method=True),
+       'attendee_count' : fields.function(_get_attendee_count,method=True,type='integer',string="attendee Count"),
        'instructor_id': fields.many2one('res.partner', 'Instructor'),
        "course_id" : fields.many2one("openacademy.course", "Course",required=True, ondelete="cascade"),
       # 'active': fields.boolean('Active'),
