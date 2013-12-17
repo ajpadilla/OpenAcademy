@@ -62,6 +62,17 @@ class session(osv.osv):
 	res[session.id] = len(session.attendee_ids)
      return res
 
+  def action_draft(self,cr,uid,ids,context=None):
+     #set to "draft" state
+     return self.write(cr,uid,ids,{'state':'draft'},context=context)
+
+  def action_confirm(self,cr,uid,ids,context=None):
+    #set to "confirmed" state
+    return self.write(cr,uid,ids,{'state':'confirmed'},context=context)
+
+  def action_done(self,cr,uid,ids,context=None):
+    #set to "done" state
+    return self.write(cr,uid,ids,{'state':'done'},context=context)
 
 
   _columns = {
@@ -77,9 +88,12 @@ class session(osv.osv):
        'attendee_count' : fields.function(_get_attendee_count,method=True,type='integer',string="attendee Count"),
        'instructor_id': fields.many2one('res.partner', 'Instructor'),
        "course_id" : fields.many2one("openacademy.course", "Course",required=True, ondelete="cascade"),
+       'state':fields.selection([('draft','Draft'),('confirmed','Confirmed'),('done','Done')],'Status',readonly=True,
+       required=True)
+
       # 'active': fields.boolean('Active'),
       }
-  _defaults = {'start_date': lambda *a : time.strftime('%Y-%m-%d'),}
+  _defaults = {'start_date': lambda *a : time.strftime('%Y-%m-%d'),'state':'draft'}
   _sql_constraints = [('unique_name', 'unique(name)','Course Title must be unique')]
 session()
 
@@ -98,7 +112,7 @@ class Partner(osv.osv):
  _inherit = "res.partner"
  _columns = {
       "instructor" : fields.boolean("Instructor"),
-       "session_ids": fields.many2many("session","attendee","partner_id","session_id","Sessions")
+      "session_ids": fields.many2many("session","attendee","partner_id","session_id","Sessions")
  }
 Partner()
 
