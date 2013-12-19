@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+   <data>
+    <record model="ir.ui.view" id="create_attendee_form_view">
+       <field name="name">openacademy.create.attendee.wizard.form</field>
+       <field name="model">openacademy.create.attendee.wizard</field>
+       <field name="type">form</field>
+       <field name="arch" type="xml">
+        <form string="Add attendee" col="2">
+        </form>
+       </field>
+    </record>
+    
+ 
+
+     <record model="ir.actions.act_window" id="create_attendee_wizard_action">
+	<field name="name">Add attendee</field>
+ 	<field name="res_model">openacademy.create.attendee.wizard</field>
+	<field name="view_type">form</field>
+	<field name="view_mode">form</field>
+	<field name="target">new</field>
+     </record>
+     
+     <menuitem name="Menu attendee" parent="openacademy_menu" id="create_attendee_wizard_menu"/>
+     <menuitem name="Add attendee" parent="create_attendee_wizard_menu" id="option_attendee" action="create_attendee_wizard_action"/>
+    </data>
+</openerp>
+
