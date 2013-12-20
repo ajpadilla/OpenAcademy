@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<document filename="test.pdf">
+  <template pageSize="(612.0,792.0)" title="Test" author="Martin Simon" allowSplitting="20">
+    <pageTemplate id="first">
+      <frame id="first" x1="57.0" y1="57.0" width="498" height="678"/>
+    </pageTemplate>
+  </template>
+  <stylesheet>
+    <blockTableStyle id="Standard_Outline">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <initialize>
+      <paraStyle name="all" alignment="justify"/>
+    </initialize>
+    <paraStyle name="P1" fontName="Helvetica" fontSize="14.0" leading="17"/>
+    <paraStyle name="Standard" fontName="Helvetica"/>
+    <paraStyle name="Heading" fontName="Helvetica" fontSize="14.0" leading="17" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="Text body" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="List" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Caption" fontName="Helvetica" fontSize="12.0" leading="15" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="Index" fontName="Helvetica"/>
+    <images/>
+  </stylesheet>
+  <story>
+    <para style="P1">[[repeatIn(objects,'session')]]
+</para>
+    <para style="P1">
+      <font color="white"> </font>
+    </para>
+    <para style="P1">[[ setLang(session.course_id.responsible_id.context_lang) ]]</para>
+    <para style="P1">
+      <font color="white"> </font>
+    </para>
+    <para style="P1">Name: [[ session.name ]]</para>
+    <para style="P1">
+      <font color="white"> </font>
+    </para>
+    <para style="P1">Date: [[ formatLang(session.date,date=True) ]]
+</para>
+    <para style="P1">
+      <font color="white"> </font>
+    </para>
+    <para style="P1">Duration: [[ formatLang(session.duration,digits=2) ]]</para>
+    <para style="P1">
+      <font color="white"> </font>
+    </para>
+    <para style="P1">Percentage of completion: [[ session.perc_completion, digits=2 ]]</para>
+    <para style="P1">
+      <font color="white"> </font>
+    </para>
+    <para style="P1">Responsable: [[ session.responsible_id.name ]]
+</para>
+    <para style="P1">=============================================
+</para>
+    <para style="P1">====================================
+</para>
+    <para style="P1">Partner
+ Signature
+</para>
+    <para style="P1">=============================================
+</para>
+    <para style="P1">====================================
+</para>
+    <para style="P1">[[repeatIn(session.attendee_ids,’attendee’)]]
+</para>
+    <para style="P1">-------------------------------------------------------------------------------------
+</para>
+    <para style="P1">[[ attendee.partner_id ]]
+</para>
+    <para style="P1">=============================================
+</para>
+    <para style="P1">====================================
+</para>
+  </story>
+</document>
