@@ -1,5 +1,6 @@
+
 {
-	"name": "Open Academy",
+        "name": "Open Academy",
 	"version": "1.0",
 	"depends": ["base"],
 	"author": "Author Name",
@@ -10,9 +11,12 @@
                         - training sessions
                         - attendees registration
                         """, 
-     	"update_xml": ["openacademy_view.xml"],
+     	"update_xml": ["openacademy_view.xml",
+                       "wizard/create_attendee_view.xml",
+                       "security/groups.xml",
+                       "security/ir.model.access.csv",
+                       "report/session_report.xml"],
 	"installable": True,
-	"active": True
-#	"certificate": "certificate",
+	"active": True,
 }
 

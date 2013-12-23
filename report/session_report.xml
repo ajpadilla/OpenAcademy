@@ -2,8 +2,8 @@
 <openerp>
  <data>
    <report id="session_report" string="Print Sessions"
-           model="session" name="session.report"
-           rml="OpenAcademy/report/session_report.rml" />
+           model="session" name="reporte.session"
+           rml="OpenAcademy/report/reporte_session.rml" />
  </data>
 </openerp>
 
