@@ -12,7 +12,6 @@
                         - attendees registration
                         """, 
      	"update_xml": ["openacademy_view.xml",
-                       "wizard/create_attendee_view.xml",
                        "security/groups.xml",
                        "security/ir.model.access.csv",
                        "report/session_report.xml"],
