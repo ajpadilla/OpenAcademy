@@ -31,7 +31,10 @@
     <para style="Standard">Duration: [[formatLang(session.duration,digits=2)]]</para>
     <para style="Standard">Remaining Seats Percent: [[ session.remaining_seats_percent ]]</para>
     <para style="Standard">Responsable: [[ session.instructor_id.name ]]</para>
-    <para style="Standard">[[repeatIn(session.attendee_ids,'attendee')]]</para>
+    <section>
+      <para style="Standard">[[repeatIn(session.attendee_ids, 'attendee')]]</para> 
+        <para style="Standard">Nombre: [[ attendee.name ]] </para>
+    </section>
   </story>
 
 </document>
